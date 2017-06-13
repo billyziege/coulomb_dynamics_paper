@@ -1,0 +1,583 @@
+%% ****** Start of file template.aps ****** %
+%%
+%%
+%%   This file is part of the APS files in the REVTeX 4 distribution.
+%%   Version 4.0 of REVTeX, August 2001
+%%
+%%
+% * <abyellow7511@gmail.com> 2015-05-10T23:02:49.040Z:
+%
+% 
+%
+%%   Copyright (c) 2001 The American Physical Society.
+%%
+%%   See the REVTeX 4 README file for restrictions and more information.
+%%
+%
+% This is a template for producing manuscripts for use with REVTEX 4.0
+% Copy this file to another name and then work on that file.
+% That way, you always have this original template file to use.
+%
+% Group addresses by affiliation; use scriptaddress for long
+% author lists, or if there are many overlapping affiliations.
+% For Phys. Rev. appearance, change preprint to twocolumn.
+% Choose pra, prb, prc, prd, pre, prl, prstab, or rmp for journal
+%  Add 'draft' option to mark overfull boxes with black boxes
+%  Add 'showpacs' option to make PACS codes appear
+\documentclass[aps,prl,twocolumn,showpacs,superscriptaddress,groupedaddress]{revtex4-1}  % for review and submission
+%\documentclass[aps,prl,preprint,showpacs,superscriptaddress,groupedaddress]{revtex4-1}  % for double-spaced preprint
+\usepackage{graphicx}  % needed for figures
+\usepackage{dcolumn}   % needed for some tables
+\usepackage{bm}        % for math
+\usepackage{amssymb}   % for math
+\usepackage{amsmath}   % for math
+\usepackage{comment}
+%\usepackage{epstopdf}
+\DeclareMathOperator{\Tr}{Tr}
+%\usepackage[super]{natbib}
+
+% avoids incorrect hyphenationz, added Nov/08 by SSR
+\hyphenation{ALPGEN}
+\hyphenation{EVTGEN}
+\hyphenation{PYTHIA}
+
+\begin{document}
+\title{Supplement: Dynamical bunching and density peaks in expanding Coulomb clouds}
+\author{X. Xiang}\email{}
+\author{B. Zerbe}\email{zerbe@msu.edu}
+\author{Others TBA}
+\author{P. M. Duxbury}\email{duxbury@msu.edu}
+
+
+\affiliation{Department of Physics and Astronomy, Michigan State University}
+\date{\today}
+
+\newcommand{\vect}[1]{\boldsymbol{#1}}​
+\pacs{71.45.Lr, 71.10.Ed, 78.47.J-, 79.60.-i}
+\maketitle
+
+\section{One dimensional density slope derivation}
+
+\begin{comment}
+In the main text, we argued
+\begin{align}
+  \rho(z)=  \rho_0(z_0) \left({dz\over dz_0}\right)^{-1}\label{eq:1D density evolution}
+\end{align}
+To determine the slope of the density, we take the derivative with respect to the z coordinate
+\begin{align}
+  \frac{d}{dz} \rho(z) &= \frac{d}{dz_0} \left(\rho_0(z_0) \left(\frac{dz}{dz_0}\right)^{-1}\right)\nonumber\\
+                                &= \frac{d}{dz_0} \left(\rho_0(z_0)\right) \left(\frac{dz}{dz_0}\right)^{-2} -  \rho_0(z_0) \left(\frac{dz}{dz_0}\right)^{-3} \frac{d^2z}{dz_0^2}\nonumber\\
+                                &= \frac{\frac{d}{dz_0} \left(\rho_0(z_0)\right) \frac{dz}{dz_0} - \rho_0(z_0)\frac{d^2z}{dz_0^2}}{\left(\frac{dz}{dz_0}\right)^{-3}}\label{eq:generic rho derivative}
+\end{align}
+For the sake of conciseness, denote $\rho_0 = \rho_0(z_0)$, $\rho' = \frac{d}{dz} \rho(z)$, $\rho_0' = \frac{d}{dz_0} \rho_0$, $v_0' = \frac{d v_0}{d z_0}$, 
+and $v_0'' = \frac{d^2 v_0}{d z_0^2}$.  
+From the main text, we have
+\begin{align}
+  \frac{dz}{dz_0} &= 1 + v_0' t +  \frac{q}{2 m \epsilon_0} \rho_0(z_0)t^2
+\end{align}
+and from this it is straightforward to show 
+\begin{align}
+  \frac{d^2z}{dz_0^2} &= v_0'' t +  \frac{q}{2 m \epsilon_0} \rho_0't^2
+\end{align}
+Subbing this back into Eq. (\ref{eq:generic rho derivative}), we get
+\begin{align}
+  \rho' &= \frac{\rho_0'\left(1 + v_0' t +  \frac{q}{2 m \epsilon_0} \rho_0t^2\right) - \rho_0\left(v_0'' t +  \frac{q}{2 m \epsilon_0} \rho_0't^2\right)}{\left(1 + v_0' t +  \frac{q}{2 m \epsilon_0} \rho_0t^2\right)^3}\nonumber\\
+          &= \frac{ \rho_0'\left( 1  + v_0' t\right) - \rho_0v_0''t }{\left(1 + v_0' t +  \frac{q}{2 m \epsilon_0} \rho_0t^2\right)^3}\label{eq:1D rho derivative} 
+\end{align}
+
+Taking another derivative with respect to $r_0$ is fairly straightforward
+\begin{align}
+  \frac{d^2}{dz^2} \rho(z) &= \frac{d \rho'}{dz} \nonumber\\
+                                       &= \frac{d \rho'}{dz_0} \left(\frac{dz}{dz_0}\right)^{-1}\nonumber\\
+                                       &= \frac{ \rho_0''\left( 1  + v_0' t\right) + \rho_0'v_0'' t - \rho_0'v_0''t - \rho_0 v_0''' t }{\left(1 + v_0' t +  \frac{q}{2 m \epsilon_0} \rho_0t^2\right)^4} \nonumber\\
+                                       &\quad\quad - 3 \frac{ \rho_0'\left( 1  + v_0' t\right) - \rho_0v_0''t }{\left(1 + v_0' t +  \frac{q}{2 m \epsilon_0} \rho_0t^2\right)^5} \left( v_0'' t +  \frac{q}{2 m \epsilon_0} \rho_0't^2\right)\nonumber\\
+                                       &= \frac{ \rho_0''\left( 1  + v_0' t\right) - \rho_0 v_0''' t }{\left(1 + v_0' t +  \frac{q}{2 m \epsilon_0} \rho_0t^2\right)^5}\left(1 + v_0' t +  \frac{q}{2 m \epsilon_0} \rho_0t^2\right) \nonumber\\
+                                       &\quad\quad - 3 \frac{ \rho_0'\left( 1  + v_0' t\right) - \rho_0v_0''t }{\left(1 + v_0' t +  \frac{q}{2 m \epsilon_0} \rho_0t^2\right)^5} \left( v_0'' t +  \frac{q}{2 m \epsilon_0} \rho_0't^2\right)                       
+\end{align}
+where $v_0''' = \frac{d^3 v_0}{dz_0^3}$ and $\rho_0'' = \frac{d^2 \rho_0}{dz_0^2}$. Unfortunately, this equation does not simplify further.  
+However, in the case where higher derivatives of $v_0$ are zero (i.e. $v_0'' = 0$, $v_0''' = 0$, etc.), we get
+\begin{align}
+  \frac{d^2}{dz^2} \rho(z) &= \frac{ \rho_0''\left( 1  + v_0' t\right) - 3 \left(\rho_0'\left( 1  + v_0' t\right)\right)\left( \frac{q}{2 m \epsilon_0} \rho_0't^2\right)}{\left(1 + v_0' t +  \frac{q}{2 m \epsilon_0} \rho_0t^2\right)^5}\nonumber\\
+                                        &= \frac{ \left( \rho_0'' - \frac{3 q}{2 m \epsilon_0} (\rho_0't)^2\right)\left( 1  + v_0' t\right)}{\left(1 + v_0' t +  \frac{q}{2 m \epsilon_0} \rho_0t^2\right)^5}
+\end{align} 
+\end{comment}
+
+\section{Derivation of time-location relations}
+Starting with the relativistic expression for change in particle energy derived in the main text
+\begin{align}
+  E_\text{2D}(t) - E(0) &= \frac{q Q_{tot} \lambda_0}{2 \pi \epsilon_0} ln\left(\frac{r}{r_0}\right)\label{eq:2D energy}\\
+  E_\text{3D}(t) - E(0) &= \frac{q Q_{tot} Q_0}{4 \pi \epsilon_0} \left(\frac{1}{r_0} - \frac{1}{r}\right)\label{eq:3D energy}
+\end{align}
+we approximate the energy change with a change in non-relativistic kinetic energy
+\begin{align}
+  \frac{1}{2} m v_\text{2D}^2 - \frac{1}{2} m v_0^2 &= \frac{q Q_{tot} \lambda_0}{2 \pi \epsilon_0} ln\left(\frac{r}{r_0}\right)\label{eq:2D kinetic energy}\\
+   \frac{1}{2} m v_\text{3D}^2 - \frac{1}{2} m v_0^2 &= \frac{q Q_{tot} Q_0}{4 \pi \epsilon_0} \left(\frac{1}{r_0} - \frac{1}{r}\right)\label{eq:3D kinetic energy}
+\end{align}
+where $v_0$ is the initial velocity of the particle and $v_\text{[2,3]D} = \frac{d r}{dt}$ are the velocity of the particle at time $t$ in the two or one of the three dimensional
+models, respectively, with the appropriate definition of $r$.  Solving these equations for the velocity at time t, we get
+\begin{align}
+  \frac{d r}{d t} &= \sqrt{\frac{q Q_{tot} \lambda_0}{\pi m \epsilon_0} ln\left(\frac{r}{r_0}\right) + v_0^2}\label{eq:2D velocity}\\
+  \frac{d r}{d t} &= \sqrt{\frac{q Q_{tot} Q_0}{2 \pi m \epsilon_0} \left(\frac{1}{r_0} - \frac{1}{r }\right) + v_0^2}\label{eq:3D velocity}
+\end{align}
+where Eq. (\ref{eq:2D velocity}) and Eq. (\ref{eq:3D velocity}) represent the 2D and 3D formulations, respectively.  
+Separating the variables and integrating, we obtian
+\begin{align}
+  t_\text{2D} &= \int_{r_0}^{r} \frac{d\tilde{r}}{ \sqrt{\frac{q Q_{tot} \lambda_0}{\pi m \epsilon_0} ln\left(\frac{\tilde{r}}{r_0}\right) + v_0^2}}\label{eq:2D time integral}\\
+  t_\text{3D} &= \int_{r_0}^{r} \frac{d\tilde{r}}{\sqrt{\frac{q Q_{tot} Q_0}{2 \pi m \epsilon_0} \left(\frac{1}{r_0} - \frac{1}{\tilde{r}}\right)+v_0^2}}\label{eq:3D time integral}
+\end{align}
+Defining
+$a = \frac{q Q_\text{tot}}{\pi m \epsilon_0}$ and $b = \frac{a Q_0}{2 r_0} + v_0^2$, we rewrite Eq. (\ref{eq:2D time integral}) and Eq. (\ref{eq:3D time integral})
+as
+\begin{align}
+  t_\text{2D} &= \int_{r_0}^{r} \frac{d\tilde{r}}{ \sqrt{a \lambda_0 ln\left(\frac{\tilde{r}}{r_0}\right) + v_0^2}}\label{eq:2D time integral subbed}\\
+  t_\text{3D} &= \int_{r_0}^{r} \frac{d\tilde{r}}{\sqrt{b - \frac{a Q_0}{2 \tilde{r} }}}\label{eq:3D time integral subbed}
+\end{align} 
+
+
+
+
+%New section
+\subsection{2D integral solution}
+We solve the two dimensional integral first.  Define $\tilde{u} = \sqrt{a \lambda_0 ln\left(\frac{\tilde{r}}{r_0}\right) + v_0^2}$.  Solving this equation for $\tilde{r}$ in terms of
+$\tilde{u}$, we see that $\tilde{r} = r_0 e^{-\frac{v_0^2}{a \lambda_0}}e^{\frac{\tilde{u}^2}{a \lambda_0}}$.  It is
+also straightforward to see that 
+\begin{align}
+  d \tilde{u} &= \frac{1}{2} \frac{1}{ \sqrt{a \lambda_0 ln\left(\frac{\tilde{r}}{r_0}\right) + v_0^2}} \frac{a \lambda_0}{\tilde{r}} d \tilde{r}\nonumber\\
+                  &= \frac{1}{ \sqrt{a \lambda_0 ln\left(\frac{\tilde{r}}{r_0}\right) + v_0^2}} \frac{a \lambda_0}{2 r_0}e^{\frac{v_0^2}{a \lambda_0}} e^{\frac{-\tilde{u}^2}{a \lambda_0}} d \tilde{r} \nonumber
+\end{align}
+Applying this change of coordinates to Eq. (\ref{eq:2D time integral subbed}), we get
+\begin{align}
+  t_\text{2D} &= \int_{u_0}^{u} \frac{2 r_0}{a \lambda_0}e^{-\frac{v_0^2}{a \lambda_0}} e^{\frac{\tilde{u}^2}{a \lambda_0}} d \tilde{u}\nonumber\\
+                    &= \frac{2 r_0}{a \lambda_0}e^{-\frac{v_0^2}{a \lambda_0}} \int_{u_0}^{u} e^{\frac{\tilde{u}^2}{a \lambda_0}} d \tilde{u}\nonumber\\
+                    &= \frac{2 r_0}{\sqrt{a \lambda_0}}e^{-\frac{v_0^2}{a \lambda_0}} \int_{w_0}^{w} e^{\tilde{w}^2} d \tilde{w}\label{eq:2D time integral in w}
+\end{align}
+where $u_0 = v_0$, $u = \sqrt{a \lambda_0 ln\left(\frac{r}{r_0}\right) + v_0^2}$, 
+$\tilde{w} = \frac{\tilde{u}}{\sqrt{a \lambda_0}}$, $w = \sqrt{ln\left(\frac{r}{r_0}\right) + \frac{v_0^2}{a \lambda_0}}$, 
+and $w_0 = \frac{v_0}{\sqrt{a \lambda_0}}$.  The remaining integral, 
+$\int_{w_0}^{w} e^{\tilde{w}^2} d \tilde{w}$ can be written in terms of the well-studied Dawson function, $F(\cdot)$:
+\begin{align}
+\int_{w_0}^{w} e^{\tilde{w}^2} d \tilde{w} &= \int_{0}^{w} e^{\tilde{w}^2} d \tilde{w} - \int_{0}^{w_0} e^{\tilde{w}^2} d \tilde{w}\nonumber\\
+                                                                &= e^{w^2} e^{-w^2} \int_{0}^{w} e^{\tilde{w}^2} d \tilde{w} - e^{w_0^2} e^{-w_0^2} \int_{0}^{w_0} e^{\tilde{w}^2} d \tilde{w}\nonumber\\
+                                                                &= e^{w^2}F(w) - e^{w_0^2} F(w_0) \nonumber\\
+                                                                &= \frac{r}{r_0} e^\frac{v_0^2}{a \lambda_0}F\left(\sqrt{ln\left(\frac{r}{r_0}\right) + \frac{v_0^2}{a \lambda_0}}\right) \nonumber\\
+                                                                &\quad\quad\quad - e^\frac{v_0^2}{a \lambda_0}F\left(\frac{v_0}{\sqrt{a \lambda_0}}\right)\label{eq:integral as Dawson}
+\end{align}
+Subbing Eq. (\ref{eq:integral as Dawson}) back into Eq. (\ref{eq:2D time integral in w}) gives us our time-position relation
+\begin{align}\label{eq:2D time vs r}
+  t_\text{2D} &= \frac{2 r}{\sqrt{a \lambda_0}} F\left(\sqrt{ln\left(\frac{r}{r_0}\right) + \frac{v_0^2}{a \lambda_0}}\right) - \frac{2 r_0}{\sqrt{a \lambda_0}} F\left(\frac{v_0}{\sqrt{a \lambda_0}}\right)
+\end{align}
+
+\subsection{3D integral solution}
+We now solve the three dimensional integral with an analogous approach.  Define $\tilde{u} = \sqrt{b - \frac{a Q_0}{2 \tilde{r} }}$ and solving for $\tilde{r}$ gives
+$\tilde{r} =  \frac{a Q_0}{2(b - \tilde{u}^2)}$.  Thus
+\begin{align}
+  d \tilde{u} &= \frac{1}{2} \frac{1}{\sqrt{b - \frac{a Q_0}{2 \tilde{r} }}}\frac{a Q_0}{2 \tilde{r}^2 } d \tilde{r}\nonumber\\
+                  &= \frac{1}{\sqrt{b - \frac{a Q_0}{2 \tilde{r} }}} \frac{(b - \tilde{u}^2)^2}{a Q_0} d\tilde{r}\nonumber
+\end{align}
+Applying this change of coordinates to Eq. (\ref{eq:3D time integral subbed}) with
+$u_0 = v_0 $ and $u = \sqrt{b - \frac{a Q_o}{2  r}}$, we get
+\begin{align}
+  t_\text{3D} &= \int_{u_0}^{u} \frac{a Q_0}{(b - \tilde{u}^2)^2} d \tilde{u}\nonumber\\
+                    &= a Q_0 \int_{u_0}^{u} \frac{1}{(b - \tilde{u}^2)^2} d \tilde{u} \nonumber\\   
+                    &= a Q_0 \left( \frac{1}{2 b^{3/2}} \tanh^{-1} \left( \frac{\tilde{u}}{\sqrt{b}}\right) + \frac{1}{2 b} \frac{\tilde{u}}{b - \tilde{u}^2}\right) \bigg \rvert_{\tilde{u} = v_0}^{\tilde{u} = \sqrt{b - \frac{a Q_o}{2  r}}}\nonumber\\
+                    &= a Q_0 \left( \frac{1}{2 b^{3/2}} A + \frac{1}{2 b} B \right )\label{eq:3D time u}
+\end{align}
+where the solution to the integral was obtained with Mathematica's online tool[Reference],
+where
+
+\begin{align}
+ A &= \tanh^{-1} \left( \frac{\tilde{u}}{\sqrt{b}}\right)\bigg \rvert_{\tilde{u} = v_0}^{\tilde{u}= \sqrt{b - \frac{a Q_o}{2  r}}} \nonumber\\
+    &= \tanh^{-1} \left( \sqrt{1 -  \frac{a Q_o}{2  b r}} \right) - \tanh^{-1} \left(\frac{v_0}{\sqrt{b}}\right)\label{eq:3D time A}
+\end{align}
+and where
+\begin{align}
+ B &= \frac{\tilde{u}}{b - \tilde{u}^2}\bigg \rvert_{\tilde{u} = v_0}^{\tilde{u}= \sqrt{b - \frac{a Q_o}{2  r}}} \nonumber\\
+    &= \frac{\sqrt{b - \frac{a Q_o}{2  r}}}{b - b + \frac{a Q_o}{2  r}} - \frac{v_0}{b - v_0^2}\nonumber\\
+    &=  \frac{2  r}{a Q_o}\sqrt{b - \frac{a Q_o}{2  r}} - \frac{v_0}{\frac{a Q_o}{2  r_0}}\nonumber\\
+    &= \frac{2 b}{a Q_0} \left(\frac{r}{\sqrt{b}}\sqrt{1 - \frac{a Q_o}{2 b r}} - \frac{r_0}{\sqrt{b}} \frac{v_0}{\sqrt{b}}\right)\label{eq:3D time B}
+\end{align}
+Substituting Eq. (\ref{eq:3D time A}) and Eq. (\ref{eq:3D time B}) back into Eq. (\ref{eq:3D time u}) gives
+\begin{align}
+  t_\text{3D} &=  \frac{a Q_0}{2 b^{3/2}} \left( \tanh^{-1} \left( \sqrt{1 -  \frac{a Q_o}{2  b r}} \right) - \tanh^{-1} \left(\frac{v_0}{\sqrt{b}}\right) \right) \nonumber\\
+                    &\quad\quad\quad+ \frac{r}{\sqrt{b}}\sqrt{1 - \frac{a Q_o}{2 b r}} - \frac{r_0}{\sqrt{b}} \frac{v_0}{\sqrt{b}}\nonumber\\
+                    &= \frac{\alpha}{\sqrt{b}} \left( \tanh^{-1} \left( \sqrt{1 -  \frac{1}{\tilde{r}}} \right) + \tilde{r}\sqrt{1 -  \frac{1}{\tilde{r}}} \right.\nonumber\\
+                    &\quad\quad\quad \left.- \tanh^{-1} \left(\sqrt{1 -  \frac{1}{\tilde{r}_0}}\right) - \tilde{r}_0\sqrt{1 -  \frac{1}{\tilde{r}_0}}\right)\label{eq:3D time vs r}
+\end{align}
+where $\alpha = \frac{a Q_0}{2 b} = \left(\frac{1}{r_0} +\frac{2}{a Q_0} v_0^2\right)^{-1} = \left(\frac{1}{r_0} +\frac{2 \pi m \epsilon_0}{q Q_0} v_0^2\right)^{-1}$, 
+$\tilde{r} = \frac{r}{\alpha}$, and $\tilde{r}_0 = \frac{r_0}{\alpha}$.  Also, we used $\frac{v_0^2}{b} = 1 - \frac{aQ_0}{2b r_0} = 1 - \frac{\alpha}{r_0} = 1 - \frac{1}{\tilde{r}_0}$.
+
+\section{Derivation of spatial derivatives with respect to initial position}
+As noted in the main text, much of the physics of distribution evolution in our models is captured in the term $\frac{dr}{dr_0}$.  
+The general procedure to derive th expressions for this derivative is to take the derivative of Eq. (\ref{eq:2D time vs r}) and Eq.
+(\ref{eq:3D time vs r}).  We do this mathematics here.
+
+
+
+
+%New section
+\subsection{The derivative in two dimensions}
+We introduce the function $\tau_\text{2D}(x) = \frac{2 x}{\sqrt{a \lambda_0}} F\left(\sqrt{ln\left(\frac{x}{r_0}\right) + \frac{v_0^2}{a \lambda_0}}\right)$ so
+that $t_\text{2D}$ may be written as $\tau_\text{2D}(r) - \tau_\text{2D}(r_0)$.  We will begin by taking derivatives of pieces of $\tau_\text{2D}(x)$ 
+with respect to $r_0$.  Note that 
+\begin{align}
+  \frac{d}{dr_0}\frac{1}{\sqrt{\lambda_0}} &= -\frac{1}{2}\frac{1}{(\lambda_0)^{3/2}} \frac{d\lambda_0}{d r_0}\nonumber\\
+                                                                   &= -\frac{1}{2 \sqrt{\lambda_0}} \frac{d \ln(\lambda_0)}{d r_0}\label{eq:derivative sqrt a lambda_0}
+ \end{align}
+\begin{comment}
+By the fundamental theorem of calculus and since $\lambda_0 = \int_0^{r_0} 2\pi \tilde{r} \rho_0(\tilde{r}) d\tilde{r}$, we get
+$ \frac{d\lambda_0}{d r_0} = 2\pi r_0 \rho_0(r_0)$.  Thus, Eq. (\ref{eq:derivative sqrt a lambda_0}) becomes
+\begin{align}
+  \frac{d}{dr_0}\frac{1}{\sqrt{a \lambda_0}} &= -\frac{\pi r_0 \rho_0(r_0)}{\lambda_0} \frac{1}{\sqrt{a\lambda_0}}\label{eq:derivative sqrt a lambda_0 with rho}
+\end{align}
+\end{comment}
+Likewise
+\begin{align}
+  \frac{d}{dr_0}\frac{1}{\lambda_0} &= -\frac{1}{\lambda_0^2} \frac{d\lambda_0}{d r_0}\nonumber\\
+                                                          &= -\frac{1}{\lambda_0} \frac{d\ln(\lambda_0)}{d r_0}\label{eq:derivative a lambda_0 with rho}
+\end{align}
+Denote $y = \sqrt{\ln \left(\frac{x}{r_0}\right) + \frac{v_0^2}{a\lambda_0}} = \sqrt{\ln \left(x \right) - \ln\left({r_0}\right) + \frac{v_0^2}{a\lambda_0}}$, thus
+\begin{align}
+  \frac{dy}{dr_0} &= \frac{1}{2y} \left(\frac{1}{x} \frac{d x}{d r_0} - \frac{1}{r_0}  -  \frac{v_0^2}{a\lambda_0} \frac{d\ln(\lambda_0)}{d r_0} +   \frac{2 v_0}{a\lambda_0}\frac{d v_0}{d r_0}  \right)\label{eq:derivative 2D sqrt term} 
+ \end{align}
+ The Dawson function has the property $\frac{d}{dy} F(y) = 1 - 2 y F(y) = \left(\frac{1}{F(y)} - 2 y\right) F(y)$, and with the chain rule this becomes
+ $\frac{d}{dr_0} F(y) = \left(\frac{1}{F(y)} - 2 y\right)  \frac{dy}{dr_0} F(y)$.  Using Eq. (\ref{eq:derivative 2D sqrt term}), this becomes 
+\begin{align} 
+  \frac{d}{dr_0} F\left(y\right) &= \left(\frac{1}{F(y)} - 2 y\right)\frac{F(y)}{2y} \times\nonumber\\
+                                              &\quad\quad\left(\frac{1}{x} \frac{d x}{d r_0} - \frac{1}{r_0}  -  \frac{v_0^2}{a\lambda_0} \frac{d\ln(\lambda_0)}{d r_0} +   \frac{2 v_0}{a\lambda_0}\frac{d v_0}{d r_0}\right)\nonumber\\
+                                              &=F(y) \left(\frac{1}{2 y F(y)} - 1\right)\times\nonumber\\
+                                              &\quad\quad\left(\frac{1}{x} \frac{d x}{d r_0} - \frac{1}{r_0}  -  \frac{v_0^2}{a\lambda_0} \frac{d\ln(\lambda_0)}{d r_0} +   \frac{2 v_0}{a\lambda_0}\frac{d v_0}{d r_0}\right)\label{eq:derivative our Dawson} 
+\end{align}
+Putting this all together, we get
+\begin{align}
+  \frac{d \tau_\text{2D}}{d r_0} &= \frac{\tau_\text{2D}}{x} \frac{dx}{dr_0}  - \frac{\tau_\text{2D}}{2}\frac{d\ln(\lambda_0)}{d r_0}  +  \tau_\text{2D}\left(\frac{1}{2 y F(y)} - 1\right)\times\nonumber\\
+                                                &\quad\quad\left(\frac{1}{x} \frac{d x}{d r_0} - \frac{1}{r_0}  -  \frac{v_0^2}{a\lambda_0} \frac{d\ln(\lambda_0)}{d r_0} +   \frac{2 v_0}{a\lambda_0}\frac{d v_0}{d r_0}\right)\nonumber\\
+                                                &= \frac{\tau_\text{2D}}{2 x y F(y)} \frac{dx}{dr_0} + \frac{\tau_\text{2D}}{r_0}\left(1 - \frac{1}{2 y F(y)}\right)\nonumber\\
+                                                &\quad\quad -  \tau_\text{2D}\frac{d\ln(\lambda_0)}{d r_0} \left(\frac{1}{2} + \frac{v_0^2}{2 a \lambda_0 y F(y)} - \frac{v_0^2}{a \lambda_0}\right)\nonumber\\
+                                                &\quad\quad + \frac{2 v_0 \tau_\text{2D}}{a\lambda_0}\frac{d v_0}{d r_0} \left(\frac{1}{2 y F(y)} - 1\right)\nonumber\\
+                                                &=\frac{1}{\sqrt{a \lambda_0}}\left(\frac{1}{ y} \frac{dx}{dr_0} + \frac{x}{r_0}\left(2 F(y) - \frac{1}{y}\right)\right.\nonumber\\
+                                                &\quad\quad -  x \frac{d\ln(\lambda_0)}{d r_0} \left(\left(1 -  \frac{2 v_0^2}{a \lambda_0}\right)F(y)  + \frac{v_0^2}{a \lambda_0}\frac{1}{y} \right)\nonumber\\
+                                                &\quad\quad \left. - \frac{2 x v_0}{a\lambda_0}\frac{d v_0}{d r_0} \left(2 F(y) - \frac{1}{y}\right)\right)\nonumber\\
+                                                &=\frac{1}{\sqrt{a \lambda_0}}\left(\frac{1}{ y} \frac{dx}{dr_0}\right.\nonumber\\
+                                                &\quad\quad + \left(\frac{x}{r_0}- \frac{2 x v_0}{a\lambda_0}\frac{d v_0}{d r_0}\right) \left(2 F(y) - \frac{1}{y}\right)\nonumber\\
+                                                &\quad\quad \left.-  x\frac{d\ln(\lambda_0)}{d r_0} \left(\left(1 -  \frac{2 v_0^2}{a \lambda_0}\right)F(y)  + \frac{v_0^2}{a \lambda_0}\frac{1}{y} \right)\right)\label{eq:derivative tau 2D} 
+\end{align}
+where $\tau_\text{2D}$ is shorthand for $\tau_\text{2D}(x) = \frac{2 x}{\sqrt{a \lambda_0}} F\left(y(x)\right)$ and it is understood that $y = y(x) = \sqrt{\ln \left(\frac{x}{r_0}\right) + \frac{v_0^2}{a\lambda_0}}$.  For $x=r$, this becomes
+\begin{align}
+   \frac{d \tau_\text{2D}(r)}{d r_0} &=\frac{1}{\sqrt{a \lambda_0}}\left( \frac{1}{y(r)} \frac{dr}{dr_0}\right.\nonumber\\
+                                                     &\quad + \frac{r}{r_0}\left(1- \frac{2 r_0 v_0 }{a\lambda_0}\frac{d v_0}{d r_0} \right) \left(2 F(y(r)) - \frac{1}{y(r)}\right)\nonumber\\
+                                                     &\quad \left.- r \frac{d\ln(\lambda_0)}{d r_0} \left(\left(1 - \frac{2 v_0^2}{a \lambda_0}\right) F(y(r))+ \frac{v_0^2}{a \lambda_0}\frac{1}{y(r)} \right)\right)\label{eq:derivative tau 2D for r}    
+\end{align}
+For $x = r_0$ and subbing $y(r_0) = \frac{v_0}{\sqrt{a \lambda_0}}$, we get
+\begin{align}
+  \frac{d \tau_\text{2D}(r_0)}{d r_0} &= \frac{1}{v_0} + \left(1- \frac{2 r_0 v_0 }{a\lambda_0}\frac{d v_0}{d r_0} \right) \left(\frac{2}{\sqrt{a\lambda_0}} F\left(\frac{v_0}{\sqrt{a \lambda_0}}\right) - \frac{1}{v_0}\right)\nonumber\\
+                                                       &\quad - \frac{r_0}{\sqrt{a \lambda_0}} \frac{d\ln(\lambda_0)}{d r_0} \left(\left(1 -  \frac{2 v_0^2}{a \lambda_0}\right)F\left(\frac{v_0}{\sqrt{a \lambda_0}}\right)  + \frac{v_0}{\sqrt{a \lambda_0}} \right)\nonumber\\
+                                                       &=\left(1- \frac{2 r_0 v_0 }{a\lambda_0}\frac{d v_0}{d r_0} \right) \frac{2}{\sqrt{a\lambda_0}} F\left(\frac{v_0}{\sqrt{a \lambda_0}}\right)\nonumber\\
+                                                       &\quad + \frac{2 r_0 }{a\lambda_0}\frac{d v_0}{d r_0}\nonumber\\ 
+                                                       &\quad - \frac{r_0}{\sqrt{a \lambda_0}} \frac{d\ln(\lambda_0)}{d r_0} \left(\left(1 -  \frac{2 v_0^2}{a \lambda_0}\right)F\left(\frac{v_0}{\sqrt{a \lambda_0}}\right)  + \frac{v_0}{\sqrt{a \lambda_0}} \right)\label{eq:derivative tau 2D for r_0} 
+\end{align}
+
+As in the one dimensional case, we are interested in the change in $r$ with respect to $r_0$ at a specific time, so time  is held constant in these derivatives.  As a results
+\begin{align}
+ 0 &= \frac{d t_\text{2D}}{d r_0} \nonumber\\
+    &=  \frac{d \tau_\text{2D}(r)}{d r_0} -  \frac{d \tau_\text{2D}(r_0)}{d r_0}
+\end{align}
+Since the first term on the right hand side of this equation is linear in $\frac{d r}{d r_0}$, we may solve for it
+\begin{align}
+  \frac{d r}{d r_0} &= \frac{r}{r_0}\left(1- \frac{2 r_0 v_0 }{a\lambda_0}\frac{d v_0}{d r_0} \right) \times\nonumber\\
+                           &\quad \left(1 - 2\left(F(y(r)) + \frac{r_0}{r}F\left(\frac{v_0}{\sqrt{a \lambda_0}}\right)\right) y(r)\right)\nonumber\\
+                           &\quad +  r \frac{d\ln(\lambda_0)}{d r_0} \left( \frac{v_0^2}{a \lambda_0} + \frac{r_0}{r}\frac{v_0}{\sqrt{a \lambda_0}} y(r) \right.\nonumber\\
+                           &\quad \left.+ \left(1 - \frac{2 v_0^2}{a \lambda_0}\right)\left(F(y(r)) + \frac{r_0}{r}F\left(\frac{v_0}{\sqrt{a \lambda_0}}\right)\right)y(r)\right)\nonumber\\   
+                           &\quad - \frac{2 r_0 }{\sqrt{a\lambda_0}}y(r)\frac{d v_0}{d r_0}\label{eq:2D dr over dr_0}
+\end{align}
+
+In the special case of no initial velocity ($v_0 = 0$ everywhere) where $F(0) =0$ and $y(r)$ simplifies to $\sqrt{\ln \left(\frac{r}{r_0}\right)}$, this expression simplifies greatly:
+
+\begin{align}
+  \frac{d r}{d r_0} &= \frac{r}{r_0} \left(1 - 2 F\left(\sqrt{\ln \left(\frac{r}{r_0}\right)}\right)\right)\sqrt{\ln \left(\frac{r}{r_0}\right)}\nonumber\\
+                           &\quad +  r \frac{d\ln(\lambda_0)}{d r_0} F\left(\sqrt{\ln \left(\frac{r}{r_0}\right)}\right)\sqrt{\ln \left(\frac{r}{r_0}\right)}\nonumber\\
+                           &= \frac{r}{r_0} \left(1 + \sqrt{\ln \left(\frac{r}{r_0}\right)} \left( r_0 \frac{d\ln(\lambda_0)}{d r_0} - 2 \right )\times\right.\nonumber\\
+                           &\quad\quad \left.F\left(\sqrt{\ln \left(\frac{r}{r_0}\right)}\right)\right)\nonumber\\
+                           &= \frac{r}{r_0} \left(1 + D_\text{2D}(r_0) 2 \sqrt{\ln \left(\frac{r}{r_0}\right)} F\left(\sqrt{\ln \left(\frac{r}{r_0}\right)}\right)\right)
+\end{align}
+where $D_\text{2D}(r_0) = \frac{r_0}{2} \frac{d\ln(\lambda_0)}{d r_0} - 1$.  Using the fundamental theorem of calculus,
+\begin{align}
+  \frac{r_0}{2} \frac{d\ln(\lambda_0)}{d r_0} &= \frac{r_0}{2 \lambda_0}\frac{d\lambda_0}{d r_0} \nonumber\\ 
+                                                                    &= \frac{r_0}{2 \lambda_0(r_0)} 2 \pi r_0 \rho_0(r_0)\nonumber\\
+                                                                    &= \frac{\rho_0(r_0)}{\frac{\lambda_0(r_0)}{\pi r_0^2}} 
+\end{align}
+where $\frac{\lambda_0(r_0)}{\pi r_0^2}$ can be interpreted as the average density in contained within the Gaussian surface determined by $r_0$.  We call this 
+$\tilde{\rho}_0(r_0)$ in the main text so that $D_\text{2D}(r_0) = \frac{\rho_0(r_0)}{\tilde{\rho}_0(r_0)} -1$.
+%New section
+\subsection{The derivatives in three dimensions}
+Analogous to the two dimensional case, we introduce the function 
+$\tau_\text{3D}(x) = \frac{\alpha}{\sqrt{b}} \left( \tanh^{-1} \left( \sqrt{1 -  \frac{1}{x}} \right) + x\sqrt{1 -  \frac{1}{x}} \right)$ so
+that $t_\text{2D}$ may be written as $\tau_\text{2D}(\frac{r}{\alpha}) - \tau_\text{2D}(\frac{r_0}{\alpha})$.
+We will
+again begin by taking derivatives of pieces of this equation:
+\begin{align}
+  \frac{d b}{d r_0} &= \frac{d \left(\frac{q Q_0}{2 \pi m \epsilon_0 r_0} + v_0^2\right)}{d r_0} \nonumber\\
+                                                  &= -\frac{q Q_0}{2 \pi m \epsilon_0 r_0^2} + \frac{\alpha b}{Q_0 r_0} \frac{d Q_0}{d r_0} + 2 v_0 \frac{d v_0}{dr_0}\nonumber\\
+                                                  &= - 2 b\left(\frac{\alpha}{2 r_0^2} - \frac{\alpha}{2 r_0} \frac{d \ln(Q_0)}{d r_0} - \frac{v_0}{b}  \frac{d v_0}{dr_0}\right) \label{eq:derivative b}
+\end{align}
+Here, $Q_0$ is $\int_0^{r_0} 4\pi \tilde{r}^2 \rho_0(\tilde{r}) d\tilde{r}$ .  Therefore $\frac{d Q_0}{d r_0}$ is $4\pi r_0^2 \rho_0(r_0) $, respectively.  For now, we will keep
+$\frac{d Q_0}{d r_0}$.  Also
+\begin{align}
+  \frac{d \frac{1}{\alpha}}{d r_0} &= \frac{d \left(\frac{1}{r_0} +\frac{2 \pi m \epsilon_0}{q Q_0} v_0^2\right)}{d r_0}  \nonumber\\
+                                                  &= -\frac{1}{r_0^2} - \frac{2 \pi m \epsilon_0}{q Q_0^2} v_0^2 \frac{d Q_0}{d r_0} + 2 \frac{2 \pi m \epsilon_0}{q Q_0} v_0 \frac{d v_0}{dr_0}\nonumber\\
+                                                  &= -\frac{1}{r_0^2} - \frac{2 v_0^2}{a Q_0^2} \frac{d Q_0}{d r_0} + \frac{4 v_0}{a Q_0} \frac{d v_0}{d r_0} \nonumber\\
+                                                  &= -\frac{1}{r_0^2} - \frac{v_0^2}{\alpha b} \frac{d \ln(Q_0)}{d r_0} +  \frac{2 v_0}{\alpha b} \frac{d v_0}{d r_0}\label{eq:derivative 1 over alpha}
+\end{align}
+where again $a = \frac{q}{\pi m \epsilon_0}$.  Next
+\begin{align}
+  \frac{d \alpha}{d r_0} &= \frac{d \left(\frac{1}{r_0} +\frac{2 \pi m \epsilon_0}{q Q_0} v_0^2\right)^{-1}}{d r_0} \nonumber\\
+                                    &= -\alpha^2\frac{d \frac{1}{\alpha}}{d r_0}\nonumber\\
+                                    &=  \alpha \left( \frac{\alpha}{r_0^2} + \frac{v_0^2}{b} \frac{d \ln(Q_0)}{d r_0} - \frac{2 v_0}{b} \frac{d v_0}{d r_0}\right)\label{eq:derivative 1 over alpha}
+\end{align}
+Looking at the $x$-dependent terms
+\begin{align}
+  \frac{d \sqrt{1 - \frac{1}{x}}}{d r_0} &= \frac{1}{2 \sqrt{1 - \frac{1}{x}}} \frac{1}{x^2} \frac{d x}{d r_0}\nonumber\\
+                                                        &= \frac{1}{2 x^2 \sqrt{1 - \frac{1}{x}}}\frac{d x}{d r_0} \label{eq:derivative sqrt 1 minus 1 over x}
+\end{align}
+and 
+\begin{align}
+  \frac{d \tanh^{-1}\left(\sqrt{1 - \frac{1}{x}}\right)}{d r_0} &= \frac{1}{1 - \left(1 - \frac{1}{x}\right)} \frac{d \sqrt{1 - \frac{1}{x}}}{d r_0}\nonumber\\
+                                                                                        &= \frac{1}{2x \sqrt{1 - \frac{1}{x}}} \frac{d x}{d r_0}\label{eq:derivative arctanh term}
+\end{align} 
+and
+\begin{align}
+  \frac{d \left(x \sqrt{1 - \frac{1}{x}}\right)}{d r_0} &= \sqrt{1 - \frac{1}{x}} \frac{d x}{d r_0} + x \frac{1}{2 x^2 \sqrt{1 - \frac{1}{x}}} \frac{d x}{d r_0}\nonumber\\
+                                                                      &=  \frac{2 x - 1 }{2 x \sqrt{1 - \frac{1}{x}}} \frac{d x}{d r_0} \label{eq:derivative x over sqrt 1 minus 1 over x}
+\end{align}
+Putting this all together
+\begin{align}
+  \frac{d \tau_\text{3D}}{d r_0} &= \frac{d \left( \frac{\alpha}{\sqrt{b}} \left( \tanh^{-1} \left( \sqrt{1 -  \frac{1}{x}} \right) + x\sqrt{1 -  \frac{1}{x}} \right) \right)}{d r_0} \nonumber\\
+                                                &= \frac{\tau_\text{3D}}{\alpha} \frac{d \alpha}{d r_0} - \frac{\tau_\text{3D}}{2 b} \frac{d b}{d r_0} \nonumber\\
+                                                &\quad\quad + \frac{\alpha}{\sqrt{b}} \left( \frac{1}{2 x \sqrt{1 - \frac{1}{x}}} \frac{d x}{d r_0} + \frac{2 x - 1}{2 x \sqrt{1 - \frac{1}{x}}} \frac{d x}{d r_0} \right)\nonumber\\
+                                                &= \tau_\text{3D}\left( \frac{\alpha}{r_0^2} + \frac{v_0^2}{b} \frac{d \ln(Q_0)}{d r_0} - \frac{2 v_0}{b} \frac{d v_0}{d r_0} + \frac{\alpha}{2 r_0^2} \right.\nonumber\\
+                                                &\quad\quad \left.- \frac{\alpha}{2 r_0} \frac{d \ln(Q_0)}{d r_0} - \frac{v_0}{b}  \frac{d v_0}{dr_0} \right)\nonumber\\
+                                                &\quad\quad + \frac{\alpha}{\sqrt{b}} \frac{1}{\sqrt{1 - \frac{1}{x}}} \frac{d x}{d r_0} \nonumber\\
+                                                &= \tau_\text{3D}\left( \frac{3\alpha}{2 r_0^2}  + \left( \frac{v_0^2}{b} - \frac{\alpha}{2 r_0} \right) \frac{d \ln(Q_0)}{d r_0} - \frac{3 v_0}{b}  \frac{d v_0}{dr_0}\right) \nonumber\\
+                                                &\quad\quad+ \frac{\alpha}{\sqrt{b}} \frac{1}{\sqrt{1 - \frac{1}{x}}} \frac{d x}{d r_0}\label{eq:derivative 3D tau}
+\end{align}
+Again where it is understood that $\tau_\text{3D}$ represents $\tau_\text{3D}(x)$.  In the case $x = \frac{r}{\alpha}$,
+\begin{align}
+  \frac{d x}{d r_0} &= \frac{1}{\alpha} \frac{d r}{d r_0} + r\frac{ d \frac{1}{\alpha}}{d r_0}\nonumber\\
+                            &= \frac{1}{\alpha} \frac{d r}{d r_0} - \frac{r}{r_0^2} - \frac{v_0^2}{b}\frac{r}{\alpha} \frac{d \ln(Q_0)}{d r_0}\nonumber\\
+                            &\quad\quad + \frac{2 v_0}{b}\frac{r}{\alpha} \frac{d v_0}{d r_0}\label{eq:dx over dr_0 for r over alpha}
+\end{align}
+and in the case $x = \frac{r_0}{\alpha}$,
+\begin{align}
+  \frac{d x}{d r_0} &= \frac{1}{\alpha}  + r_0\frac{ d \frac{1}{\alpha}}{d r_0}\nonumber\\
+                            &= \frac{1}{\alpha}  - \frac{1}{r_0} - \frac{v_0^2}{b}\frac{r_0}{\alpha} \frac{d \ln(Q_0)}{d r_0}\nonumber\\
+                            &\quad\quad + \frac{2 v_0}{b}\frac{r_0}{\alpha} \frac{d v_0}{d r_0}\label{eq:dx over dr_0 for r_0 over alpha}
+\end{align}
+
+Again we use the observation that the spatial derivative of the time is $0$.  Therefore
+\begin{align}
+  0 &= \frac{ d t_\text{3D}}{d r_0}\nonumber\\
+     &=  \frac{d \tau_\text{2D}(r)}{d r_0} -  \frac{d \tau_\text{2D}(r_0)}{d r_0}\nonumber\\
+     &=  t_\text{3D} \left( \frac{3\alpha}{2 r_0^2}  + \left( \frac{v_0^2}{b} - \frac{\alpha}{2 r_0} \right) \frac{d \ln(Q_0)}{d r_0} - \frac{3 v_0}{b}  \frac{d v_0}{dr_0} \right) \nonumber\\
+     &\quad\quad + \frac{\alpha}{\sqrt{b}} \frac{1}{\sqrt{1 - \frac{\alpha}{r}}} \left( \frac{1}{\alpha} \frac{d r}{d r_0} - \frac{r}{r_0^2} \right.\nonumber\\
+     &\quad\quad \left. - \frac{v_0^2}{b}\frac{r}{\alpha} \frac{d \ln(Q_0)}{d r_0} + \frac{2 v_0}{b}\frac{r}{\alpha} \frac{d v_0}{d r_0}\right)\nonumber\\
+     &\quad\quad - \frac{\alpha}{\sqrt{b}} \frac{1}{\sqrt{1 - \frac{\alpha}{r_0}}}  \left( \frac{1}{\alpha} - \frac{1}{r_0} \right.\nonumber\\
+     &\quad\quad \left. - \frac{v_0^2}{b}\frac{r_0}{\alpha} \frac{d \ln(Q_0)}{d r_0} + \frac{2 v_0}{b}\frac{r_0}{\alpha} \frac{d v_0}{d r_0}\right)\nonumber\\
+     &=  t_\text{3D} \left( \frac{3\alpha}{2 r_0^2}  + \left( \frac{v_0^2}{b} - \frac{\alpha}{2 r_0} \right) \frac{d \ln(Q_0)}{d r_0} - \frac{3 v_0}{b}  \frac{d v_0}{dr_0} \right) \nonumber\\
+     &\quad\quad + \frac{1}{\sqrt{b}} \frac{1}{\sqrt{1 - \frac{\alpha}{r}}} \left( \frac{d r}{d r_0} - \frac{\alpha r}{r_0^2} \right.\nonumber\\
+     &\quad\quad \left.- \frac{v_0^2}{b} r \frac{d \ln(Q_0)}{d r_0} + \frac{2 v_0}{b} r \frac{d v_0}{d r_0} \right)\nonumber\\
+     &\quad\quad - \frac{1}{\sqrt{b}} \frac{1}{\sqrt{1 - \frac{\alpha}{r_0}}}  \left(1 - \frac{\alpha}{r_0} \right.\nonumber\\
+     &\quad\quad \left. - \frac{v_0^2}{b} r_0 \frac{d \ln(Q_0)}{d r_0} + \frac{2 v_0}{b}r_0 \frac{d v_0}{d r_0}\right)\nonumber\\
+     &=  t_\text{3D} \left( \frac{3\alpha}{2 r_0^2}  + \left( \frac{v_0^2}{b} - \frac{\alpha}{2 r_0} \right) \frac{d \ln(Q_0)}{d r_0}\right) \nonumber\\
+     &\quad\quad + \frac{1}{\sqrt{b}} \frac{1}{\sqrt{1 - \frac{\alpha}{r}}} \left( \frac{d r}{d r_0} - \frac{\alpha r}{r_0^2} \right.\nonumber\\
+     &\quad\quad - \left. \frac{v_0}{b} r \left(v_0 \frac{d \ln(Q_0) }{d r_0} - 2 \frac{d v_0}{d r_0}\right) \right)\nonumber\\
+     &\quad\quad - \frac{\sqrt{1 - \frac{\alpha}{r_0}}}{\sqrt{b}} + \frac{v_0}{b}\frac{r_0}{\sqrt{b}\sqrt{1 - \frac{\alpha}{r_0}}} \left( v_0 \frac{d \ln(Q_0)}{d r_0} - 2 \frac{d v_0}{d r_0}\right)
+     &\quad\quad 
+\end{align}
+Solving for $\frac{d r}{d r_0}$ we get
+\begin{align}
+  \frac{d r}{d r_0} &= - t_\text{3D} \sqrt{b} \sqrt{1 - \frac{\alpha}{r}} \left( \frac{3\alpha}{2 r_0^2}  + \left( \frac{v_0^2}{b} - \frac{\alpha}{2 r_0} \right) \frac{d \ln(Q_0)}{d r_0}\right) \nonumber\\
+                           & + \sqrt{1 - \frac{\alpha}{r_0}}\sqrt{1 - \frac{\alpha}{r}} + \frac{\alpha r}{r_0^2} \nonumber\\
+                           & - \frac{v_0}{b}\frac{\sqrt{1 - \frac{\alpha}{r}}}{\sqrt{1 - \frac{\alpha}{r_0}}}r_0 \left( v_0 \frac{d \ln(Q_0)}{d r_0} - 2 \frac{d v_0}{d r_0}\right) \nonumber\\
+                           & + \frac{v_0}{b} r \left( v_0 \frac{d \ln(Q_0)}{d r_0} - 2 \frac{d v_0}{d r_0}\right)\nonumber\\
+                           &= \sqrt{1 - \frac{\alpha}{r}}\left [\sqrt{1 - \frac{\alpha}{r_0}} + \frac{\alpha^2}{r_0^2} \left(\frac{\frac{r}{\alpha}}{\sqrt{1 - \frac{\alpha}{r}}}  -  \frac{3\sqrt{b} t_\text{3D}}{2 \alpha}\right)\right.\nonumber\\
+                           &+ \frac{v_0^2}{b}\left( \frac{r}{\alpha} - \frac{\sqrt{1 - \frac{\alpha}{r}}}{\sqrt{1 - \frac{\alpha}{r_0}}}\frac{r_0}{\alpha} - \frac{\sqrt{b} t_\text{3D}}{\alpha} \right)\alpha \frac{d \ln(Q_0)}{d r_0}\nonumber\\
+                           &\left.+\frac{\sqrt{b} t_\text{3D}}{2 \alpha} \frac{\alpha}{r_0} \alpha \frac{d \ln(Q_0)}{d r_0}\right.\nonumber\\
+                           &\left.- \frac{2 v_0^2}{b} \left( \frac{r}{\alpha} - \frac{\sqrt{1 - \frac{\alpha}{r}}}{\sqrt{1 - \frac{\alpha}{r_0}}}\frac{r_0}{\alpha} \right) \frac{\alpha}{v_0} \frac{d v_0}{d r_0}\right]\nonumber\\
+                           &= \sqrt{1 - \frac{\alpha}{r}}\left [\sqrt{1 - \frac{\alpha}{r_0}} + \frac{\alpha^2}{r_0^2} \left(\frac{\frac{r}{\alpha}}{\sqrt{1 - \frac{\alpha}{r}}}  -  \frac{3\sqrt{b} t_\text{3D}}{2 \alpha}\right)\right.\nonumber\\
+                           &+ \left(1 - \frac{\alpha}{r_0}\right) \left( \frac{r}{\alpha} - \frac{\sqrt{1 - \frac{\alpha}{r}}}{\sqrt{1 - \frac{\alpha}{r_0}}}\frac{r_0}{\alpha}- \frac{\sqrt{b} t_\text{3D}}{\alpha} \right)\alpha \frac{d \ln(Q_0)}{d r_0}\nonumber\\
+                           &+\frac{\sqrt{b} t_\text{3D}}{2 \alpha} \frac{\alpha}{r_0} \alpha \frac{d \ln(Q_0)}{d r_0}\nonumber\\
+                           &\left.- 2 \left(1 - \frac{\alpha}{r_0}\right) \left( \frac{r}{\alpha} - \frac{\sqrt{1 - \frac{\alpha}{r}}}{\sqrt{1 - \frac{\alpha}{r_0}}}\frac{r_0}{\alpha} \right) \alpha \frac{d \ln(v_0)}{d r_0} \right]\label{eq:3d dr over dr_0}
+\end{align}
+where we again used $\frac{v_0^2}{b} = 1 - \frac{\alpha}{r_0}$.  Note, $\frac{r}{\alpha}$, $\frac{r_0}{\alpha}$, $\frac{v_0^2}{b}$, 
+$\frac{\sqrt{b}t_\text{3D}}{\alpha}$, and $\alpha \frac{d \ln(Q_0)}{d r_0}$ are all dimensionless.
+
+\subsection{Analysis of the zero initial velocity case in 3D}
+In the special case of $v_0 = 0$, we have the following relations, we have $\alpha = r_0$, $b = \frac{q Q_{tot} Q_0}{2 \pi m \epsilon_0 r_0}$, and $t_\text{3D} = \frac{r_0}{\sqrt{b}} \left( \tanh^{-1} \left( \sqrt{1 -  \frac{r_0}{r}} \right) + \frac{r}{r_0}\sqrt{1 -  \frac{r_0}{r}}\right)$.  Thus Eq. (\ref{eq:3d dr over dr_0})
+becomes
+\begin{align}
+  \frac{d r}{d r_0} &= \frac{r}{r_0} + \sqrt{1 - \frac{r_0}{r}} \left( \frac{r_0}{2} \frac{d \ln(Q_0)}{d r_0} - \frac{3}{2}\right)\frac{\sqrt{b}}{r_0} t_\text{3D}\nonumber\\
+                           &= \frac{r}{r_0} + D_\text{3D}(r_0)  \left( \sqrt{1 -  \frac{r_0}{r}} \tanh^{-1} \left( \sqrt{1 -  \frac{r_0}{r}} \right)\right.\nonumber\\
+                           &\quad\left. + \frac{r}{r_0}\left(1 -  \frac{r_0}{r}\right)\right)\nonumber\\
+                           &= \frac{r}{r_0} \left( 1 + D_\text{3D}(r_0) \left( \frac{r_0}{r} \sqrt{1 -  \frac{r_0}{r}} \tanh^{-1} \left( \sqrt{1 -  \frac{r_0}{r}} \right)\right.\right.\nonumber\\
+                           &\quad\left.\left. + 1 -  \frac{r_0}{r}\right)\right)\label{eq:3d dr over dr_0 no v_0}
+\end{align}
+where $D_\text{3D}(r_0) = \frac{3}{2}\left(\frac{r_0}{3} \frac{d\ln(Q_0)}{d r_0} - 1\right)$.  Using the fundamental theorem of calculus,
+\begin{align}
+  \frac{r_0}{3} \frac{d\ln(Q_0)}{d r_0} &= \frac{r_0}{3 Q_0}\frac{dQ_0}{d r_0} \nonumber\\ 
+                                                                    &= \frac{r_0}{3 Q_0(r_0)} 4 \pi r_0^2 \rho_0(r_0)\nonumber\\
+                                                                    &= \frac{\rho_0(r_0)}{\frac{Q_0(r_0)}{\frac{4}{3}\pi r_0^3}} 
+\end{align}
+where $\frac{Q_0(r_0)}{\frac{4}{3}\pi r_0^3}$ can be interpreted as the average density in contained within the Gaussian surface determined by $r_0$.
+We again call this 
+$\tilde{\rho}_0(r_0)$ in the main text so that $D_\text{3D}(r_0) = \frac{3}{2}\left(\frac{\rho_0(r_0)}{\tilde{\rho}_0(r_0)} -1\right)$.
+
+\begin{comment}
+This reduces to the density evolution equation of
+\begin{align}
+  \rho(r) = \frac{r_0 \rho_0(r_0)}{r + \sqrt{\frac{q Q_0}{2 \pi m \epsilon_0}}\sqrt{\frac{1}{r_0} - \frac{1}{r}} \left( \frac{r_0}{2} \frac{d \ln(Q_0)}{d r_0} - \frac{3}{2}\right)t_\text{3D}}\label{eq:3D density evolution}
+\end{align}
+where it is understood that in the disc-like case $\rho$ represents $\sigma$.
+
+For the time independent form, set $\frac{r_0}{2} \frac{d \ln(Q_0)}{d r_0} - \frac{3}{2} = 0$.  This results in $d \ln(Q_0) = \frac{3}{r_0} d r_0$ which becomes
+$\ln(Q_0) = \ln\left(r_0^3\right) + \ln\left(\frac{C}{3}\right)$ where $\ln\left(\frac{C}{3}\right)$ is a constant of integrations,
+which gives $Q_0 = \frac{C}{3} r_0^3$.  Taking the derivative of both sides with respect to $r_0$ gives $\frac{d Q_0}{d r_0} = C r_0^2$.
+By the fundamental theorem of calculus, $\frac{d Q_0}{d r_0} = 4 \pi r_0^2 \rho_0(r_0)$ for the spherical case and 
+$\frac{d Q_0}{d r_0} = 2 \pi r_0 \sigma_0(r_0)$ for the disc-like case.  Therefore, for the spherical case, the uniform distribution, 
+$\rho_0(r_0) = \frac{C}{4 \pi}$ is the time independent distribution.  For the disc-like case, 
+$\sigma_0(r_0) = \frac{C}{2 \pi} r_0$ is the time independent distribution.  These distribution reduce the density evolution equation to
+\begin{align}
+  \rho(r) = \frac{r_0 \rho_0(r_0)}{r}
+\end{align}
+which is a fact that has been commented on previously.
+
+We now take the derivative of Eq. (\ref{eq:3D density evolution}) with respect to $r_0$.  Analogous to the one dimensional case
+\begin{align}
+  \frac{d}{dr}\rho(r) &= \left(\frac{d}{dr_0}\rho(r)\right)   \left( \frac{dr}{dr_0} \right)^{-1}\nonumber\\
+                              &=\left(\frac{\rho_0}{r'}\right)' r'^{-1}\nonumber\\
+                              &= \frac{\rho_0' r' - \rho_0  r''}{r'^3}\label{eq:derivative of rho with respect to r}
+\end{align}
+where ${}'$ indicates derivative with respect to $r_0$ and $\rho_0 = \rho_0(r_0)$.
+For sake of mathematical conciseness, define $A$ such that 
+$\frac{dr}{dr_0} = \frac{r}{r_0} + At_\text{3D} = \frac{r}{r_0} + B C D t_\text{3D}$ where $B = \sqrt{\frac{q Q_0}{2 \pi m \epsilon_0}}$, $C=\sqrt{\frac{1}{r_0} - \frac{1}{r}}$, and 
+$D =  \frac{1}{2} \frac{d \ln(Q_0)}{d r_0} - \frac{3}{2 r_0}$.  Notice
+\begin{align}
+  \frac{d^2r}{dr_0^2} &= -\frac{r}{r_0^2}+\frac{1}{r_0}\frac{dr}{dr_0} + \frac{dA}{dr_0}t_\text{3D}\nonumber\\
+                                 &= -\frac{r}{r_0^2} + \frac{1}{r_0}\left( \frac{r}{r_0} + At_\text{3D}\right) + \frac{dA}{dr_0}t_\text{3D}\nonumber\\
+                                 &= \left(\frac{A}{r_0} +  \frac{dA}{dr_0}\right)t_\text{3D} \label{eq:second derivative r with respect to r_0}
+\end{align}
+and
+\begin{align}
+  \frac{dA}{dr_0} &= \frac{A}{2Q_0} \frac{dQ_0}{dr_0} + \frac{A}{2 \left(\frac{1}{r_0} - \frac{1}{r}\right)} \left(-\frac{1}{r_0^2} + \frac{1}{r^2}\frac{dr}{dr_0}\right)\nonumber\\
+                           &\quad\quad + \frac{A}{D}\left(\frac{dD}{d r_0} \right) \nonumber\\
+                           &= \frac{A}{2} \frac{d\ln(Q_0)}{dr_0} - \frac{A}{2 \left(\frac{1}{r_0} - \frac{1}{r}\right)r_0^2} + \frac{A}{2 \left(\frac{1}{r_0} - \frac{1}{r}\right)r^2}\frac{dr}{dr_0}\nonumber\\
+                           &\quad\quad+B C\left(\frac{dD}{d r_0} \right) \nonumber\\
+                           &=  -\frac{A}{2 \left(\frac{1}{r_0} - \frac{1}{r}\right)r_0^2} +\frac{A}{2 \left(\frac{1}{r_0} - \frac{1}{r}\right) r_0 r}+ \frac{A^2 t_\text{3D}}{2 \left(\frac{1}{r_0}-\frac{1}{r}\right)r^2}  \nonumber\\
+                           &\quad\quad+ \frac{A}{2} \frac{d \ln(Q_0)}{d r_0} + B C\left(\frac{dD}{d r_0} \right)  \nonumber\\
+                           &= -\frac{A}{2\left(\frac{1}{r_0} - \frac{1}{r}\right)r_0}\left(\frac{1}{r_0} - \frac{1}{r}\right) + \frac{B^2D^2 t_\text{3D}}{2r^2}  \nonumber\\
+                           &\quad\quad+ \frac{A}{2} \left(2 D + \frac{3}{r_0}\right) + B C\left(\frac{dD}{d r_0} \right)  \nonumber\\
+                           &= -\frac{A}{2 r_0} + \frac{B^2D^2 t_\text{3D}}{2 r^2} + AD + \frac{3A}{2 r_0} + B C\left(\frac{dD}{d r_0} \right)  \nonumber\\
+                           &= \frac{A}{r_0} + AD + B C\left(\frac{dD}{d r_0} \right) + \frac{B^2D^2 t_\text{3D}}{2 r^2}  \label{eq: dA over dr_0}
+\end{align}
+Subbing Eq. (\ref{eq: dA over dr_0}) back into Eq. (\ref{eq:second derivative r with respect to r_0}), we see
+\begin{align}
+  \frac{d^2r}{dr_0^2} &= \left(\frac{2A}{r_0} + AD + B C\left(\frac{dD}{d r_0} \right)\right)t_\text{3D} \nonumber\\
+                                 &\quad\quad + \frac{B^2D^2 }{2 r^2}t_\text{3D}^2\nonumber\\
+                                 &= \left(D^2 + \frac{2}{r_0}D + D'\right)B C t_\text{3D} \nonumber\\
+                                 &\quad\quad + \frac{B^2D^2 }{2 r^2}t_\text{3D}^2  \label{eq:second derivative r with respect to r_0 subbed}
+\end{align}
+where $D' = \frac{dD}{dr_0}$.
+Notice
+\begin{align}
+  \frac{d^2 \ln(Q_0)}{d r_0^2}  &= \frac{1}{Q_0} \frac{d^2 Q_0}{d r_0^2} - \frac{1}{Q_0^2} \left(  \frac{d Q_0}{d r_0} \right)^2 \nonumber\\
+                                                &= \frac{1}{Q_0} \frac{d^2 Q_0}{d r_0^2} - \left(  \frac{d \ln\left(Q_0\right)}{d r_0} \right)^2\label{eq:second derivatibe Q_0} 
+\end{align}
+By the fundamental theorem of calculus, we have
+\begin{align}
+  \frac{dQ_0}{dr_0} &= \left\{ \begin{array}{lr}
+                                             4 \pi r_0^2 \rho_0 & \text{spherical}\\
+                                             2 \pi r_0 \sigma_0 &\text{disc-like}
+                                           \end{array}\right.\label{eq:fundamental theorem of calc}
+\end{align}
+Let 
+\begin{align}
+  \alpha &= \left\{\begin{array}{lr}
+                         4 \pi r_0^2 & \text{spherical}\\
+                         2 \pi r_0 &\text{disc-like}
+                    \end{array}\right.
+\end{align}
+and notice
+\begin{align}
+  \alpha' &= \left\{\begin{array}{lr}
+                         8 \pi r_0 & \text{spherical}\\
+                         2 \pi &\text{disc-like}
+                    \end{array}\right.
+\end{align}
+Thus Eq. (\ref{eq:fundamental theorem of calc.}) can be written as
+\begin{align}
+  \frac{dQ_0}{dr_0} &= \alpha \rho_0
+\end{align}
+and we have
+\begin{align}
+  \frac{d\ln(Q_0)}{dr_0} &= \alpha \frac{\rho_0}{Q_0}
+\end{align}
+where it is again understood that $\rho_0$ represents $\sigma_0$ in the disc-like case.  Therefore
+\begin{align}
+  D &= \frac{\alpha}{2} \frac{\rho_0}{Q_0} - \frac{3}{2 r_0} \label{eq: D rho relation}
+\end{align}
+and solving this for $\rho_0$ we get
+\begin{align}
+  \rho_0 &= \frac{2 D Q_0}{\alpha} + \frac{3 Q_0}{\alpha r_0} \nonumber\\
+             &= \frac{Q_0}{\alpha}\left(2D + \frac{3}{r_0}\right) \label{eq: rho D relation}
+\end{align}
+Define $n $ such that $\frac{\alpha'}{\alpha} = \frac{n}{r_0}$ where $n = 2$ in the spherical case and $n=1$ in the disc-like case. 
+Solving for $\rho_0'$ we get
+\begin{align}
+  \rho_0' &= \left( \frac{1}{\alpha} \frac{dQ_0}{dr_0} - \frac{Q_0}{\alpha}\frac{\alpha'}{\alpha} \right) \left(2D + \frac{3}{r_0}\right)  + \frac{Q_0}{\alpha}\left(2 D' - \frac{3}{r_0^2}\right)\nonumber\\
+              &=  \left( \rho_0 - \frac{n Q_0}{\alpha r_0} \right) \left(2D + \frac{3}{r_0}\right)  + \frac{Q_0}{\alpha}\left(2 D' - \frac{3}{r_0^2}\right)  \nonumber\\
+              &=  \frac{Q_0}{\alpha}\left(\left( 2D + \frac{3 - n}{r_0} \right) \left(2D + \frac{3}{r_0}\right)  + 2 D' - \frac{3}{r_0^2}\right)  \nonumber\\
+              &=  \frac{Q_0}{\alpha}\left(4D^2 + \frac{12 - 2 n}{r_0}D  + \frac{9 - 3n}{r_0^2}  + 2 D' - \frac{3}{r_0^2}\right)  \nonumber\\
+              &= \frac{Q_0}{\alpha}\left(4D^2 + \frac{12 - 2 n}{r_0}D  + \frac{6 - 3n}{r_0^2}  + 2 D'\right) 
+\end{align}
+We now look at $r'^3 \frac{\alpha}{Q_0}\frac{d}{dr}\rho(r)$, which we can $Z$ for brevity,
+first using Eq. (\ref{eq:derivative of rho with respect to r})
+\begin{align}
+  Z &= \frac{\alpha}{Q_0}\left(\rho_0' r' - \rho_0  r''\right)\nonumber\\
+     &= \left(4D^2 + \frac{12 - 2 n}{r_0}D  + \frac{6 - 3n}{r_0^2}  + 2 D'\right)\left(\frac{r}{r_0} + BCDt_\text{3D}\right)\nonumber\\
+     &\quad\quad -\left(2D + \frac{3}{r_0}\right)\left(D^2 + \frac{2}{r_0}D + D'\right)B C t_\text{3D} \nonumber\\
+     &\quad\quad - \left(2D + \frac{3}{r_0}\right) \frac{B^2D^2 }{2 r^2}t_\text{3D}^2
+\end{align}
+
+
+
+
+
+
+\begin{align*}
+  \frac{dD}{dr_0} &= \frac{\alpha'}{2} \frac{\rho_0}{Q_0} + \frac{\alpha}{2} \frac{\rho_0'}{Q_0} -  \frac{1}{2}\left( \alpha \frac{\rho_0}{Q_0}  \right)^2 + \frac{3}{2 r_0^2}
+\end{align*}
+Therefore
+\begin{align}
+  D^2 + \frac{2}{r_0}D + \frac{dD}{d r_0} &= \left(\frac{\alpha}{2} \frac{\rho_0}{Q_0} - \frac{3}{2 r_0}\right)^2 + \frac{\alpha}{r_0} \frac{\rho_0}{Q_0} - \frac{3}{r_0^2}\nonumber\\
+                                                                &\quad + \frac{\alpha'}{2} \frac{\rho_0}{Q_0} + \frac{\alpha}{2} \frac{\rho_0'}{Q_0} -  \frac{1}{2}\left( \alpha \frac{\rho_0}{Q_0}  \right)^2 + \frac{3}{2 r_0^2}\nonumber\\
+                                                                &=  \frac{1}{4}\left(\alpha\frac{\rho_0}{Q_0}\right)^2 - \frac{3\alpha}{2 r_0}\frac{\rho_0}{Q_0} + \frac{9}{4r_0^2} - \frac{3}{2 r_0^2}\nonumber\\
+                                                                &\quad + \frac{\alpha'}{2} \frac{\rho_0}{Q_0} + \frac{\alpha}{2} \frac{\rho_0'}{Q_0} -  \frac{1}{2}\left( \alpha \frac{\rho_0}{Q_0}  \right)^2\nonumber\\
+                                                                &=  -\frac{1}{4}\left(\alpha\frac{\rho_0}{Q_0}\right)^2 - \frac{3\alpha}{2 r_0}\frac{\rho_0}{Q_0} + \frac{3}{4r_0^2}\nonumber\\
+                                                                &\quad + \frac{\alpha'}{2} \frac{\rho_0}{Q_0} + \frac{\alpha}{2} \frac{\rho_0'}{Q_0} 
+\end{align}
+\end{comment}
+\textit{\textbf{Acknowledgment}}
+This work was supported the Colleges of Natural Science and Communication
+Arts and Sciences at Michigan State University.
+ Computational resources were provided by the High Performance Computer Center at MSU. 
+ 
+%\nocite{*}
+\bibliographystyle{apsrev4-1}
+\bibliography{uem}
+%\bibliography{opt_citation_PD}
+
+\end{document}
+
+\begin{figure}
+\includegraphics[width=0.40\textwidth]{figures/main2_curr_tote}%3freqs_linearR}
+\caption{\label{fig:curr} Properties of the system with the optimal pulse acting on the system from time $t=0$ to $t=20$ $h/t^*$ (a)  The average occupancy of the conduction and valence bands $n_{\pm}(t)$, (b) The real space order parameter $\Omega (t)$, which measures the difference in occupancy of the two sublattices,  (c)  The energy $\langle H(t)\rangle $ of the CDW system.  }
+\end{figure}
+
