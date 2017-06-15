@@ -77,39 +77,41 @@ tuned using the initial particle density profile and velocity chirp.
 \pacs{71.45.Lr, 71.10.Ed, 78.47.J-, 79.60.-i}
 \maketitle
 
-High charge density systems arise in a variety of physical contexts ranging 
-from astrophysics[need references];  accelerator technology [need references]; 
-electron microscopy[need references, Jensen, Rose, Jensen etc.]; to 
+Non-neutral plasma systems arise in a variety of physical contexts ranging 
+from astrophysics[need references];  accelerator technologies \cite{Bacci:2014_plasma_acceleration,Boine:2015_intense_beams,Whelan:2016_MRI,Bernal:2016_recirculator};
+ion and neutron production \cite{Bulanov:2002_charged_beam_generation,Fukuda:2009_species_generation,Esirkepov:2004_highly_efficient_ion_generation,Kaplan:2015_preprint,Parks:2001_neutron_production,Bychenkov_2015_review}
+electron microscopy\cite{Murphy:2014_cold_ions,Luiten:2004_uniform_ellipsoidal}; to 
 high power vacuum electronics[need references, Zheng etc.].  Understanding of  
 the dynamics of spreading of such systems is critical to the design of next generation 
 technologies, and simple analytic models are particularly helpful 
 for instrument design.  As a result, substantial theoretical efforts have already
-been made in this vein[Jensen,Reed,Siwick,the accelerator theory papers].  Specifically, 
+been made in this vein\cite{Jansen:1988_book,Reiser:1994_book,Batygin:2001_self,Bychenkov:2005_coulomb_explosion,Grech:2011_coulomb_explosion,Kaplan:2003_shock,Kovalev:2005_kinetic_spherically_coulomb_explosion,Last:1997_analytic_coulomb_explosion,Eloy:2001_coulomb_explosion,Krainov:2001_ce_dynamics,Morrison:2015_slow_down_dynamics,Boella:2016_multiple_species}.  Specifically, 
 free expansion of 
-clouds of charged particles starting from rest
-have been well studied both analytically and computationally [Grech and the like], and
-a number of studies have found evidence of the formation of a region of high-density on the periphery
-of the clouds under certain conditions[Grech,Russian papers,Reed].
+clouds of charged single-specie particles starting from rest
+have been well studied both analytically and computationally \cite{Last:1997_analytic_coulomb_explosion,Eloy:2001_coulomb_explosion,Grech:2011_coulomb_explosion,Batygin:2001_self,Degtyareva:1998_gaussian_pileup,Siwick:2002_mean_field,Qian:2002_fluid_flow,Reed:2006_short_pulse_theory,Collin:2005_broadening}, and
+a number of studies have found evidence of the formation of a region of high-density, often termed a ``shock'', on the periphery
+of the clouds under certain conditions\cite{Grech:2011_coulomb_explosion,Kaplan:2003_shock,Kovalev:2005_kinetic_spherically_coulomb_explosion,Last:1997_analytic_coulomb_explosion,Murphy:2014_cold_ions,Reed:2006_short_pulse_theory,Degtyareva:1998_gaussian_pileup}.
 
 One application of these theories that is of particular current interest is to 
 high density electron clouds used in ultrafast electron microscopy (UEM).  
 In the UEM community, researches have conducted substantial theoretical treatment of initially 
 extremely short bunches of thousands to hundreds of millions of electrons that operate in a regime dominated
 by a virtual cathode (VC) limit which is independent from
-the Child-Langmuir current limit[Valfells, Qian, Siwick, Reed, Collins, others].  These photo-emitted electron bunches
+the Child-Langmuir current limit\cite{Luiten:2004_uniform_ellipsoidal,Valfells:2002_vc_limit,King:2005_review,Miller:2014_science_review,Tao:2012_space_charge}.  These photo-emitted electron bunches
 typically have an in-plane, ``transverse" extent 
 that is typically of order one hundred microns, while the  longitudinal 
 spread is typically of order fifty femtoseconds, which corresponds to sub-micron widths[King2005 and modern reviews].  
 After photoemission, 
 the electrons are extracted longitudinally using either a DC 
-or AC field typically in the hundreds of kV[our work, Miller's work, Luiten's work] or low MV [Musucemi] ranges, respectively.   However, the theoretical 
+or AC field typically in the hundreds of kV/m\cite{Tao:2012_space_charge,Portman:2013_computational_characterization,van_Oudheusden:2007_rf_compression_theory,Sciaini:2011_review} through the tens of MV/m \cite{Li:2014_single_shot,Musumeci:2010_single_shot} ranges, respectively.   However, the theoretical 
 treatments of such ``pancake-like" electron 
-bunch evolution have largely focused on the longitudinal dimension, 
+bunch evolution have largely focused on the longitudinal dimension\cite{Luiten:2004_uniform_ellipsoidal,Siwick:2002_mean_field,Qian:2002_fluid_flow,Reed:2006_short_pulse_theory,Collin:2005_broadening}, 
 and the few studies looking at transverse dynamics have either assumed a uniform-transverse
 distribution \cite{Collin:2005_broadening} or have looked at the effect of a smooth Gaussian-to-uniform evolution of the transverse profile
 on the evolution of the pulse in the longitudinal direction\cite{Reed:2006_short_pulse_theory}.  
 Of specific note, only one analytic study found any indication, a weak longitudinal signal,
-of forementioned high-density peripheral regions\cite{Reed:2006_short_pulse_theory}.{
+of fore-mentioned high-density peripheral regions\cite{Reed:2006_short_pulse_theory} only after substantial
+theoretical argumentation.{
 
 \begin{figure*}
   \centering
@@ -148,9 +150,9 @@ attractive theoretical observation relevant to a number
 of fields is 
 that an ellipsoidal cloud of cool, uniformly distributed
 charged particles has a linear electric field within the ellipsoid which results in maintenance of the 
-uniform charge density as the cloud spreads [Grech and others?].    
+uniform charge density as the cloud spreads \cite{Grech:2011_coulomb_explosion}.    
 In the UEM community, such a uniform distribution is a prerequisite 
-in employing techniques such as emittance compensation [reference].
+in employing techniques such as emittance compensation \cite{Rosenzweig:2006_emittance_compensation}.
 To create such uniform charge distributions, it has long been proposed that the formation of a uniform ellipsoid may be generated through
 proper control of the transverse profile 
 of a short charged-particle bunch emitted from a source into vacuum\cite{Luiten:2004_uniform_ellipsoidal}, 
@@ -160,7 +162,7 @@ such a uniform distribution\cite{Musucemi:2008_generate_uniform_ellipsoid}.  Con
 expectations from the free expansion work but consistent with the longitudinal analyses, this shadow
 lacks any indication of a peripheral region of high-density as expected from free-expansion studies.
 However, recent work has indicated that a substantial high density region may indeed form in
-the transverse direction[Ruan's transverse], and N-particle simulation results, as
+the transverse direction\cite{Williams:2017_transverse_emittance}, and N-particle simulation results, as
 demonstrated in Fig. (\ref{fig:distribution substructure}), demonstrate a substantial
 ring-like region of high density circumscribing the median of the bunch.
   
@@ -183,7 +185,7 @@ derived from the analytical charged-particle dynamics.
 
 One reason that this phenomenon has not been seen previously 
 is apparent in Fig. (\ref{fig:distribution substructure}).  Previous studies, including our own work,
-have looked at the projection of the distribution to the x-z plane[references]. 
+have looked at the projection of the distribution to the x-z plane\cite{Luiten:2004_uniform_ellipsoidal,Musucemi:2008_generate_uniform_ellipsoid,Portman:2014_image_charge,Morrison:2013_measurement,Li:2008_quasiellipsoidal}. 
 Fig. (\ref{fig:distribution substructure})
 shows that by projecting the distribution in this manner with the ability to only discern
 density fluctuations at about the 10\% level results in the density substructure primarily along the bunch
@@ -224,7 +226,7 @@ most analytic work has been conducted using $\le~10\text{k}$ electrons with a
 transverse standard deviation of 100 $\mu$m, and this structure is
 not apparent for at least 500 ps.  Moreover, even when using the slicing 
 analytic strategy, this structure is barely discernible from stochastic noise.  Also, as can be seen
-in Fig. (\ref{fig:emergence time vs plasma period}), the pulse emergence time is essentailly
+in Fig. (\ref{fig:emergence time vs plasma period}), the pulse emergence time is essentially
 a constant factor times the plasma period.  We derive
 the corresponding factor explicitly for cylindrical and spherical symmetries later in this manuscript.
 
@@ -237,7 +239,7 @@ capture the gross dynamics.  Distilling this reasoning, a distribution that is o
 toward the center, then particles toward the center should experience more radial force resulting in an inverse velocity chirp
 that results in ring-like build-up of electrons.  However, it is not immediately apparent why such dynamics are almost
 entirely absent in the 
-longitudinal direction as found by numerous studies [references]; therefore, we develop a theory to describe this understanding in one, two, and three dimensions
+longitudinal direction as found by numerous studies \cite{Luiten:2004_uniform_ellipsoidal,Siwick:2002_mean_field,Reed:2006_short_pulse_theory}; therefore, we develop a theory to describe this understanding in one, two, and three dimensions
 where analytic progress is possible due to the unique properties of the Coulomb interaction in 
 special symmetric geometries. 
 
@@ -263,7 +265,7 @@ relation is the elementary constant acceleration kinematic equation
 \end{equation}
 where $v_0$ is the initial velocity of the charged particle at $z_0$.  In general,
 both $v_0$ and $a_0$ are functions of the initial position, $z_0$, and the special case of $v_0 = 0$ everywhere, which we will call the cold-case,
-is commonly assumed in the literature [references].  Notice, that particle crossover should never occur in the cold case resulting in this description being valid
+is commonly assumed in the literature.  Notice, that particle crossover should never occur in the cold case resulting in this description being valid
 for 1D cold case dynamics for all time. 
 
 Since particles may neither be created nor destroyed in our model, we have
@@ -386,6 +388,7 @@ where $F(\cdot)$ represents the Dawson function and $\bar{\tau}_{p,0}$ represent
 determined from the initial conditions
 by $\bar{\tau}_{p,0} = 2\pi \sqrt{\frac{m\epsilon_0}{q Q_\text{tot} \bar{\rho}_0}}$ indicating that the
 appropriate time scale is essentially the plasma period as determined qualitatively in Fig. (\ref{fig:emergence time vs plasma period}).
+The expression for time in the spherically symmetric case, $t_\text{3D}$, has been derived previously \cite{Last:1997_analytic_coulomb_explosion}.
 Furthermore, the time-position relation detailed in these equations depends solely on the amount of charge 
 nearer to the origin than the point in question, i.e. $Q_\text{tot} \bar{\rho}_0$, consistent with 
 Gauss's law and not on the details of the distribution.  Notice, however,
